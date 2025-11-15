@@ -244,7 +244,8 @@ chainstd tx staking create-validator \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="1" \
   --gas="auto" \
-  --from=alice
+  --from=alice \
+  --yes
 ```
 
 ### 4. Token 模块
