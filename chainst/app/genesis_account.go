@@ -17,19 +17,19 @@ type GenesisAccount struct {
 
 	// 锁仓账户字段
 	// 初始锁仓金额
-	OriginalVesting  sdk.Coins `json:"original_vesting" yaml:"original_vesting"`   // total vesting coins upon initialization
+	OriginalVesting sdk.Coins `json:"original_vesting" yaml:"original_vesting"` // total vesting coins upon initialization
 	// 已委托的自由币
-	DelegatedFree    sdk.Coins `json:"delegated_free" yaml:"delegated_free"`       // delegated vested coins at time of delegation
+	DelegatedFree sdk.Coins `json:"delegated_free" yaml:"delegated_free"` // delegated vested coins at time of delegation
 	// 已委托的锁仓币
 	DelegatedVesting sdk.Coins `json:"delegated_vesting" yaml:"delegated_vesting"` // delegated vesting coins at time of delegation
 	// 锁仓开始时间
-	StartTime        int64     `json:"start_time" yaml:"start_time"`               // vesting start time (UNIX Epoch time)
+	StartTime int64 `json:"start_time" yaml:"start_time"` // vesting start time (UNIX Epoch time)
 	// 锁仓结束时间
-	EndTime          int64     `json:"end_time" yaml:"end_time"`                   // vesting end time (UNIX Epoch time)
+	EndTime int64 `json:"end_time" yaml:"end_time"` // vesting end time (UNIX Epoch time)
 
 	// 模块账户字段
 	// 模块名称
-	ModuleName        string   `json:"module_name" yaml:"module_name"`               // name of the module account
+	ModuleName string `json:"module_name" yaml:"module_name"` // name of the module account
 	// 模块权限
 	ModulePermissions []string `json:"module_permissions" yaml:"module_permissions"` // permissions of module account
 }

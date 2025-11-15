@@ -1,4 +1,5 @@
 syntax = "proto3";
+
 package chainst.token.v1;
 
 import "amino/amino.proto";
@@ -15,6 +16,11 @@ service Query {
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/chainst/token/v1/params";
   }
+
+  // TokenInfo Queries a list of TokenInfo items.
+  rpc TokenInfo(QueryTokenInfoRequest) returns (QueryTokenInfoResponse) {
+    option (google.api.http).get = "/chainst/token/v1/token_info/{denom}";
+  }
 }
 
 // QueryParamsRequest is request type for the Query/Params RPC method.
@@ -28,3 +34,11 @@ message QueryParamsResponse {
     (amino.dont_omitempty) = true
   ];
 }
+
+// QueryTokenInfoRequest defines the QueryTokenInfoRequest message.
+message QueryTokenInfoRequest {
+  string denom = 1;
+}
+
+// QueryTokenInfoResponse defines the QueryTokenInfoResponse message.
+message QueryTokenInfoResponse {}

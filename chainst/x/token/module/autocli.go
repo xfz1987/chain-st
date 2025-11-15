@@ -17,6 +17,13 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Use:       "params",
 					Short:     "Shows the parameters of the module",
 				},
+				{
+					RpcMethod:      "TokenInfo",
+					Use:            "token-info [denom]",
+					Short:          "Query token-info",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "denom"}},
+				},
+
 				// this line is used by ignite scaffolding # autocli/query
 			},
 		},
@@ -27,6 +34,18 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				{
 					RpcMethod: "UpdateParams",
 					Skip:      true, // skipped because authority gated
+				},
+				{
+					RpcMethod:      "MintTokens",
+					Use:            "mint-tokens [amount] [denom]",
+					Short:          "Send a mint-tokens tx",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "amount"}, {ProtoField: "denom"}},
+				},
+				{
+					RpcMethod:      "TransferTokens",
+					Use:            "transfer-tokens [to] [amount] [denom]",
+					Short:          "Send a transfer-tokens tx",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "to"}, {ProtoField: "amount"}, {ProtoField: "denom"}},
 				},
 				// this line is used by ignite scaffolding # autocli/tx
 			},

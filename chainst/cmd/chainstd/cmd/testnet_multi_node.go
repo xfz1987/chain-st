@@ -185,7 +185,7 @@ func initTestnetFiles(
 	// 定义账户变量
 	var (
 		genAccounts     []authtypes.GenesisAccount // 存储创世账户
-		genBalances     []banktypes.Balance // 存储账户余额
+		genBalances     []banktypes.Balance        // 存储账户余额
 		genFiles        []string
 		persistentPeers string
 		gentxsFiles     []string
@@ -254,14 +254,14 @@ func initTestnetFiles(
 		if err := writeFile(file, nodeDir, cliPrint); err != nil {
 			return err
 		}
-    // 3.为账户分配初始代币
+		// 3.为账户分配初始代币
 		accTokens := sdk.TokensFromConsensusPower(1000, sdk.DefaultPowerReduction)
 		accStakingTokens := sdk.TokensFromConsensusPower(500, sdk.DefaultPowerReduction)
 		coins := sdk.Coins{
 			sdk.NewCoin("testtoken", accTokens),
 			sdk.NewCoin(sdk.DefaultBondDenom, accStakingTokens),
 		}
-    // 4.创建账户余额
+		// 4.创建账户余额
 		genBalances = append(genBalances, banktypes.Balance{Address: addr.String(), Coins: coins.Sort()})
 		// 5.创建基础账户
 		genAccounts = append(genAccounts, authtypes.NewBaseAccount(addr, nil, 0, 0))
@@ -361,14 +361,15 @@ func writeFile(file, dir string, contents []byte) error {
 
 	return nil
 }
- 
-/**
-  * 将账户信息写入创世状态（Genesis State）
-  *  关键流程：
-  1. auth模块: 负责账户身份认证
-  2. bank模块: 负责账户余额管理
-  3. 创世状态: 区块链启动时的初始状态
- */
+
+/*
+*
+  - 将账户信息写入创世状态（Genesis State）
+  - 关键流程：
+    1. auth模块: 负责账户身份认证
+    2. bank模块: 负责账户余额管理
+    3. 创世状态: 区块链启动时的初始状态
+*/
 func initGenFiles(
 	clientCtx client.Context, mbm module.BasicManager, chainID string,
 	genAccounts []authtypes.GenesisAccount, genBalances []banktypes.Balance,
